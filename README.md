@@ -1,7 +1,5 @@
 **Convert frontier forum links from ancient format to current format**
 
-    https://cmdr-nowski.github.io/flf/
-
 E.g.
 
 ```
@@ -21,3 +19,5 @@ https://forums.frontier.co.uk/threads/missing-poi-for-sjk-378-a-b-c-listening-po
 ```
 
 Trivially doable manually, and probably quicker than using this, but here it is anyway :)
+
+Available at https://cmdr-nowski.github.io/flf/ (or just save and use it locally)
