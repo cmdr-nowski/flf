@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FDev forums old link fix</title>
+<style>
+body {
+    background: #000;
+    background-color: #12122c;
+    color: #aaa;
+    color: orange;
+}
+
+.c {
+    width 100%
+    padding 2rem;
+    margin 2rem;
+    text-align: center;
+}
+
+.linkspan {
+    color: #aaa;
+}
+
+input, input[type="text"] {
+  transform:scale(2,2);
+  background-color: #12122c;
+  color: #68c0f0;
+  color: orange;
+}
+
+input[type="checkbox"] {
+  transform:translate(0, -10%);
+  transform:scale(2, 2);
+  margin: 12px;
+}
+a {
+  color: aqua;
+}
+</style>
+</head>
+<body>
+<hr />
+<h1>
+<p align="center">
+Convert old Frontier forum links to new link format
+</p>
+<div class="c">
+<input type="text" size="50" id="link" name="link" placeholder="put link here and press enter">
+</div>
+<br/>
+<div class="c">
+<input type="checkbox" name="redir" id="redir" checked />
+<label for="redir">Immediate departure? </label>
+</div>
+</h1>
+<hr />
+<h2>
+<div id="debug"></div>
+</h2>
+<script>
+
+function debug(str) {
+    document.getElementById('debug').innerHTML += '<p align="center">' + str + '</p>'
+}
+
+/*
+function updateValue(e) {
+  oldLink = e.target.value;
+}
+*/
+
+function fixLink() {
+    const re = /https:\/\/forums\.frontier\.co\.uk\/showthread.php\/(\d+)\-.*/;
+    const matches = oldLink.match(re);
+    document.getElementById('debug').innerHTML = '';
+    oldLink = oldLink.trim();
+
+    if ((matches === null) || !(matches[1] > 0)) {
+        debug("Supplied link: '<span class=\"linkspan\">" + oldLink + "</span>' <= doesn't look like a fixable old Frontier forum link.");
+        return;
+    }
+
+    const newLink = 'https://forums.frontier.co.uk/threads/' + matches[1];
+    debug('old link: <span class="linkspan">' + oldLink + '</span>');
+    debug('new link: <a href="' + newLink + '">' + newLink + '</a>');
+
+    if (document.getElementById('redir').checked) {
+        window.location.href = newLink;
+    }
+}
+
+let oldLink = '';
+const linkIn = document.getElementById('link');
+// linkIn.addEventListener("beforeinput", updateValue);
+linkIn.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        oldLink = this.value;
+        fixLink();
+    }
+});
+
+</script></body></html>
