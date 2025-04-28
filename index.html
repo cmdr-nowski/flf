@@ -64,12 +64,6 @@ function debug(str) {
     document.getElementById('debug').innerHTML += '<p align="center">' + str + '</p>'
 }
 
-/*
-function updateValue(e) {
-  oldLink = e.target.value;
-}
-*/
-
 function fixLink() {
     const re = /https:\/\/forums\.frontier\.co\.uk\/showthread.php\/(\d+)\-.*/;
     const matches = oldLink.match(re);
@@ -91,9 +85,8 @@ function fixLink() {
 }
 
 let oldLink = '';
-const linkIn = document.getElementById('link');
-// linkIn.addEventListener("beforeinput", updateValue);
-linkIn.addEventListener("keydown", function(event) {
+
+document.getElementById('link').addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
         event.preventDefault();
         oldLink = this.value;
