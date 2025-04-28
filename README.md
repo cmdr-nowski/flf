@@ -1,5 +1,7 @@
 **Convert frontier forum links from ancient format to current format**
 
+    https://cmdr-nowski.github.io/flf/
+
 E.g.
 
 ```
